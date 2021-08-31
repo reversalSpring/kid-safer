@@ -19,7 +19,7 @@
 * Mybatis(sql문을 연습해 보기 위해 사용)
 
 ## 📌인프라
-
+![시스템구상도](https://user-images.githubusercontent.com/30167661/131579587-2b89e851-af7b-4907-b148-a857e8c4916e.jpg)
 
 ## 📌Git Flow
 
