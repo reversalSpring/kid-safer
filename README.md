@@ -7,6 +7,7 @@
 * 객체지향 기본 원리를 적용하여 Spring IoC/DI, AOP, PSA 활용과 의미 있는 코드를 작성하는 것이 목표입니다.
 * 라이브러리 및 애노테이션 적용시 의미를 이해하고 사용 목적을 고려하여 작성합니다.
 * 단순히 기능 구현을 하는 것이 아니라 대용량 트래픽 처리까지 고려한 기능을 구현하는 것이 목표입니다.
+  * nGrinder 및 pinpoint를 사용 : https://blog.naver.com/reversalspring/222471933850
 * Jenkins를 이용한 CI/CD 환경 구축합니다.
 
 ## 📌사용 기술
@@ -14,8 +15,10 @@
 * Spring boot
 * Gradle
 * Java8
+* MySQL
+* Mybatis(sql문을 연습해 보기 위해 사용)
 
-(TBD)
+## 📌인프라
 
 
 ## 📌Git Flow
