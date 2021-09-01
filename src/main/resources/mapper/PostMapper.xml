@@ -4,51 +4,60 @@
 
 <mapper namespace="com.flab.kidsafer.mapper.PostMapper">
   <select id="findPostById" resultType="com.flab.kidsafer.dto.PostDTO">
-    SELECT id, parentId, districtId, title, contents, fee, startDate, endDate, registerDate,
-    dueDate, isFinished
+    SELECT id
+    , parent_id as parentId
+    , districtId as district_id
+    , title
+    , contents
+    , fee
+    , start_date as startDate
+    , end_date as endDate
+    , register_date
+    , due_date as dueDate
+    , is_finished as isFinished
     FROM posts
     WHERE id = #{postId}
   </select>
 
   <insert id="registerPost" parameterType="com.flab.kidsafer.dto.PostDTO">
     INSERT INTO
-    posts
-    (parentId,
-    districtId,
-    title,
-    contents,
-    fee,
-    startDate,
-    endDate,
-    registerDate,
-    dueDate,
-    isFinished
+    posts(
+    parent_id
+    , district_id
+    , title
+    , contents
+    , fee
+    , start_date
+    , end_date
+    , register_date
+    , due_date
+    , is_finished
     )
     VALUES
     (
-    #{parentId},
-    #{districtId},
-    #{title},
-    #{contents},
-    #{fee},
-    #{startDate},
-    #{endDate},
-    Now(),
-    #{dueDate},
-    'N'
+    #{parentId}
+    , #{districtId}
+    , #{title}
+    , #{contents}
+    , #{fee}
+    , #{startDate}
+    , #{endDate}
+    , Now()
+    , #{dueDate}
+    , 'N'
     )
   </insert>
 
   <update id="modifyPostInfo">
     UPDATE posts
-    SET districtId = IFNULL(#{districtId}, districtId),
-    title = IFNULL(#{title}, title),
-    contents = IFNULL(#{contents}, contents),
-    fee = IFNULL(#{fee}, fee),
-    startDate = IFNULL(#{startDate}, startDate),
-    endDate = IFNULL(#{endDate}, endDate),
-    dueDate = IFNULL(#{dueDate}, dueDate),
-    isFinished = IFNULL(#{isFinished}, isFinished)
+    SET district_id = IFNULL(#{districtId}, district_id)
+    , title = IFNULL(#{title}, title)
+    , contents = IFNULL(#{contents}, contents)
+    , fee = IFNULL(#{fee}, fee)
+    , start_date = IFNULL(#{startDate}, startDate)
+    , end_date = IFNULL(#{endDate}, endDate)
+    , due_date = IFNULL(#{dueDate}, dueDate)
+    , is_finished = IFNULL(#{isFinished}, isFinished)
     WHERE id = #{id}
   </update>
 

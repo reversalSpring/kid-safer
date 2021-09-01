@@ -4,40 +4,78 @@
 
 <mapper namespace="com.flab.kidsafer.mapper.UserMapper">
   <select id="findById" resultType="com.flab.kidsafer.domain.User">
-    SELECT id, email, password, nickname, phone, type, status
+    SELECT id
+    , email
+    , password
+    , nickname
+    , phone
+    , type
+    , status
     FROM user
     WHERE id = #{userId}
   </select>
 
   <select id="findByIdAndPassword" resultType="com.flab.kidsafer.domain.User">
-    SELECT id, email, password, nickname, phone, type, status
+    SELECT id
+    , email
+    , password
+    , nickname
+    , phone
+    , type
+    , status
     FROM user
     WHERE id = #{userId}
     AND password = #{password}
   </select>
 
   <select id="findByEmailAndPassword" resultType="com.flab.kidsafer.domain.User">
-    SELECT id, email, password, nickname, phone, type, status
+    SELECT id
+    , email
+    , password
+    , nickname
+    , phone
+    , type
+    , status
     FROM user
     WHERE email = #{email}
     AND password = #{password}
   </select>
 
   <insert id="insertUser" parameterType="com.flab.kidsafer.domain.User">
-    INSERT INTO user(email, password, nickname, phone, type, status)
-    VALUES (#{email}, #{password}, #{nickname}, #{phone}, #{type}, #{status})
+    INSERT INTO user(
+    email
+    , password
+    , nickname
+    , phone
+    , type
+    , status
+    )
+    VALUES (
+    #{email}
+    , #{password}
+    , #{nickname}
+    , #{phone}
+    , #{type}
+    , #{status}
+    )
   </insert>
 
   <select id="findByEmail" resultType="com.flab.kidsafer.domain.User">
-    SELECT id, email, password, nickname, phone, type, status
+    SELECT id
+    , email
+    , password
+    , nickname
+    , phone
+    , type
+    , status
     FROM user
     WHERE email = #{email}
   </select>
 
   <update id="updateUserInfo">
     UPDATE user
-    SET nickname = IFNULL(#{nickname}, nickname),
-    phone = IFNULL(#{phone}, phone)
+    SET nickname = IFNULL(#{nickname}, nickname)
+    , phone = IFNULL(#{phone}, phone)
     WHERE id = #{userId}
   </update>
 
@@ -48,23 +86,20 @@
   </update>
 
   <update id="updateEmailCheckTokenWithTime" parameterType="com.flab.kidsafer.domain.User">
-    update
-    user
+    update user
     set email_token_generated_date = #{emailCheckTokenGeneratedAt},
     email_token = #{emailCheckToken}
     where email = #{email}
   </update>
 
   <update id="updateEmailStatus" parameterType="com.flab.kidsafer.domain.User">
-    update
-    user
+    update user
     set status = #{status}
     where email = #{email}
   </update>
 
   <update id="updateUserStatus">
-    UPDATE
-      user
+    UPDATE user
     SET status = #{status}
     WHERE id = #{userId}
   </update>

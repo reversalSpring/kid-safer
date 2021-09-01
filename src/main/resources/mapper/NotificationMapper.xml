@@ -6,26 +6,38 @@
   <select id="countByUserAndChecked" resultType="Long">
     SELECT count(*)
     FROM notification
-    WHERE userId = #{userId}
+    WHERE user_id = #{userId}
       and checked = #{checked}
-    order by createDate desc
+    order by create_date desc
   </select>
 
   <select id="selectNotificationByUserAndChecked" resultType="com.flab.kidsafer.domain.Notification">
     SELECT id
-         , message
-         , checked
-         , userId
-         , notificationType
+    , message
+    , checked
+    , userId
+    , notification_type
     FROM notification
     WHERE userId = #{userId}
       and checked = #{checked}
-    order by createDate desc
+    order by create_date desc
   </select>
 
   <insert id="insertNotification" parameterType="com.flab.kidsafer.domain.Notification">
-    INSERT INTO notification (message, checked, userId, notificationType, createDate)
-    VALUE (#{message}, #{checked}, #{userId}, #{notificationType}, now());
+    INSERT INTO notification (
+    message
+    , checked
+    , user_id
+    , notification_type
+    , create_date
+    )
+    VALUE (
+    #{message}
+    , #{checked}
+    , #{userId}
+    , #{notificationType}
+    , now()
+    );
   </insert>
 
   <update id="updateNotificationsChecked">
@@ -37,6 +49,6 @@
   <delete id="deleteNotification">
     DELETE FROM notification
     WHERE checked = true
-    and userId = #{userId}
+    and user_id = #{userId}
   </delete>
 </mapper>

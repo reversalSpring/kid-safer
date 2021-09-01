@@ -5,8 +5,8 @@
   <select id="hasPostLikeByPostIdAndUserId" resultType="boolean">
     SELECT IF(COUNT(*) >= 1, 1, 0)
     FROM posts_like
-    WHERE postID = #{postId}
-    AND userID = #{userId}
+    WHERE post_id = #{postId}
+    AND user_id = #{userId}
   </select>
 
   <insert id="insertPostLike" parameterType="com.flab.kidsafer.dto.PostLikeDTO">
@@ -16,7 +16,7 @@
 
   <delete id="deletePostLike" parameterType="com.flab.kidsafer.dto.PostLikeDTO">
     DELETE FROM posts_like
-    WHERE postId = #{postId}
-    AND userID = #{userId}
+    WHERE post_id = #{postId}
+    AND user_iD = #{userId}
   </delete>
 </mapper>
